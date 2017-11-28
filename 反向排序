@@ -1,0 +1,47 @@
+//从键盘输入一个字符串，并统计该字符串中大写字母和小写字母的个数，并分别反向输出大写字符和小写字符
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char stack1[100];//用于存放大写字母的栈；
+    int p1 = 0;//stack1的栈顶指针；
+    int count1=0;//用于记录大写字母的个数；
+    char stack2[100];//用于存放小写字母的栈；
+    int p2=0;//stack2的栈顶指针；
+    int count2=0;//用于记录小写字母的个数；
+    char c[100];
+    gets(c);//从键盘输入一个字符串；
+    int i;
+    for(i=0; i<strlen(c);i++)
+    {
+        if(c[i]>=65 && c[i]<=90)//如果是大写字母；
+        {
+            count1++;
+            stack1[p1++]=c[i];
+        }
+        else if(c[i]>97 && c[i]<=122)//如果小写字母
+        {
+            count2++;
+            stack2[p2++]=c[i];
+        }
+    }
+    printf("大写字母的个数为：%d\n",count1);
+    printf("小写字母的个数为：%d\n",count2);
+    i=count1 - 1;
+    printf("反向输出大写字母：\n");
+    while(i>=0)//反向输出小写字母
+    {
+        printf("%c",stack1[i]);
+        i--;
+    }
+    printf("\n");
+    i=count2 - 1;
+    printf("反向输出小写字母：\n");
+    while(i>=0)//反向输出小写字母
+    {
+        printf("%c",stack2[i]);
+        i--;
+    }
+    return 0;
+}
